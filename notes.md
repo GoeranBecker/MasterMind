@@ -11,6 +11,13 @@
     - a given color combination of pins which needs to be cracked
 - guess:
     - a given color combination by the Codebreaker
+- answer:
+    - marks the perfect and imperfect pins of a guess
+
+- perfect:
+    - a pin with the right color in the right place
+- imperfect:
+    - a pin with the right color but in the wrong place
 - pin:
     - a single pin inside of a code
 - slot
@@ -45,6 +52,9 @@
 - stick with vanilla css
 
 ### Backend
+
+- For the backend we use python and flask
+- sqlite as database
 
 #### Spiel-Logik
 
