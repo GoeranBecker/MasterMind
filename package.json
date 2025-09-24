@@ -2,7 +2,6 @@
   "name": "mastermind",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
   "keywords": [],
   "author": "Göran Becker & Thies Josten",
@@ -11,11 +10,9 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
-
   "dependencies": {
   },
   "devDependencies": {
-    "typescript": "^5.9.2",
-    "@types/node": "^24.5.2"
+    "typescript": "^5.9.2"
   }
 }
