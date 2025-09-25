@@ -1,4 +1,5 @@
 from enum import Enum
+from itertools import chain
 
 class Color(Enum):
     RED = 1
@@ -13,15 +14,32 @@ class Hit(Enum):
     MISS = 3
     
 
-class Code(list):
+PRINT_PAD = 2 + max([len(word) for word in chain([color.name for color in Color],
+                                             [hit.name for hit in Hit])])
+
+
+class Code(list[Color]):
     def __init__(self, colors:list[Color]):
         for color in colors: self.append(color)
+
+
+    def __str__(self) -> str:
+        result = ""
+        for color in self:
+            result += f"{color.name:^{PRINT_PAD}}|" 
+        return result[:-2]
         
-        
-class Answer(list):
+
+class Answer(list[Hit]):
     def __init__(self, hits:list[Hit]):
         for hit in hits: self.append(hit)
       
+
+    def __str__(self) -> str:
+        result = ""
+        for hit in self:
+            result += f"{hit.name:^{PRINT_PAD}}|" 
+        return result[:-2]
 
    
 class GameState:
@@ -29,7 +47,7 @@ class GameState:
         self.number_of_pins:int = 4
         self.color_set:list[Color] = [Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW] 
         self.code:Code = Code([Color(1), Color(2), Color(3), Color(4)])
-        self.codemaker_is_human = True
+        self.codemaker_is_human = False
         self.codebreaker_is_human = True
         
         self.number_of_rounds:int = 10
@@ -47,7 +65,7 @@ class GameState:
         if self.codemaker_is_human:
             answer = self.get_answer()
         else:
-            answer = self.calc_answer()
+            answer = self.calc_answer(guess, self.code)
         
         self.rounds.append(Round(guess, answer))
         # check if guess is correct/ answer is all pins perfect
@@ -81,11 +99,9 @@ class GameState:
             hits.append(Hit.IMPERFECT)
         for i in range(self.number_of_pins-len(hits)):
             hits.append(Hit.MISS)
-        print(hits)
+
         return Answer(hits)
             
-  
-
 
 class Round:
     def __init__(self, guess:Code, answer:Answer):
@@ -99,7 +115,7 @@ def init_game() -> GameState:
 g = GameState()
 g.play_round()
 guess = g.rounds[0].guess
-g.calc_answer(guess, g.code)
-print("guess:", guess)
-print("code:", g.code)
+print("code  :", g.code)
+print("guess :", guess)
+print("answer:", g.rounds[0].answer)
 print(g.code == guess)      
