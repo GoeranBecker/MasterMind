@@ -36,17 +36,20 @@ class GameState:
         self.rounds:list[Round] = []
         
     def play_round(self):
+        # should be next_move() and decide next move based on gamestate
         guess = None
         if self.codebreaker_is_human:
             guess = self.get_guess()
         else:
             guess = self.calc_guess()
         
+        answer = None
         if self.codemaker_is_human:
             answer = self.get_answer()
         else:
             answer = self.calc_answer()
         
+        self.rounds.append(Round(guess, answer))
         # check if guess is correct/ answer is all pins perfect
         
             
@@ -94,7 +97,8 @@ def init_game() -> GameState:
     pass
 
 g = GameState()
-guess = g.get_guess()
+g.play_round()
+guess = g.rounds[0].guess
 g.calc_answer(guess, g.code)
 print("guess:", guess)
 print("code:", g.code)
