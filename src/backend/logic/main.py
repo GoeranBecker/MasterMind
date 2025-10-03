@@ -68,7 +68,10 @@ class GameState:
             answer = self.calc_answer(guess, self.code)
         
         self.rounds.append(Round(guess, answer))
+    
         # check if guess is correct/ answer is all pins perfect
+        if all(x == Hit.PERFECT for x in answer):
+            print(f"You won in round {len(self.rounds)}")
         
             
     def calc_guess(self) -> Code: 
@@ -113,9 +116,11 @@ def init_game() -> GameState:
     pass
 
 g = GameState()
-g.play_round()
-guess = g.rounds[0].guess
-print("code  :", g.code)
-print("guess :", guess)
-print("answer:", g.rounds[0].answer)
-print(g.code == guess)      
+for i in range(g.number_of_rounds): 
+    g.play_round() 
+    guess = g.rounds[i].guess
+    print("code  :", g.code)
+    print("guess :", guess)
+    print("answer:", g.rounds[i].answer)
+    if g.code == guess:
+        break      
