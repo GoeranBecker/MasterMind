@@ -1,0 +1,10 @@
+:root {
+    --BLUE: rgb(43, 52, 173);
+    --RED: rgb(177, 23, 23);
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(32, 37, 43);
+}

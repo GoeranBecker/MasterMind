@@ -1,0 +1,11 @@
+.pin {
+    height: 70%;
+    aspect-ratio: 1;
+
+    background-color: darkcyan;
+
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 50%;
+    border-color: rgb(11, 12, 17);
+}

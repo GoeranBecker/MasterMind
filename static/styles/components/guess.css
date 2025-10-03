@@ -1,0 +1,16 @@
+.guess {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 70%;
+    aspect-ratio: 4;
+    
+    background-color:rgb(74, 84, 97);
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(35, 126, 236);
+    border-radius: 25px;
+}

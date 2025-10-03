@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mastermind</title>
-    <link rel='stylesheet' href = '{{url_for("static", filename = "style.css")}}'>
+    <link rel='stylesheet' href = '{{url_for("static", filename = "styles/style.css")}}'>
 </head>
 <body>
-    <h1>Hallo Welt</h1>
+    {% include 'components/guess.html' %}
+    <!-- <h1>Hallo Welt</h1> -->
     <script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
