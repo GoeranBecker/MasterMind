@@ -1,8 +1,14 @@
 :root {
-    
+    --BLUE: rgb(43, 52, 173);
+    --RED: rgb(177, 23, 23);
 }
 
 body{
+    width: 500px;
+    height: 500px;
     margin: 0 0;
     padding: 0;
+    background: 
+        repeating-conic-gradient(#808080 0 25%, #0000 0 50%) 
+        50% / 200px 200px
 }
