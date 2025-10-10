@@ -1,10 +1,8 @@
-<head>
-    <link rel='stylesheet' href = '{{url_for("static", filename = "styles/components/guess.css")}}'>
-    <script href = '{{url_for("static", filename = "js/components/guess.js")}}'></script>
-</head>
+<link rel='stylesheet' href = '{{url_for("static", filename = "styles/components/guess.css")}}'>
+<script type = "module" src = '{{url_for("static", filename = "js/components/guess.js")}}'></script>
 
-<div class = "guess">
+<div class = "guess" id="guess0">
     {% for _ in range(4)  %}
-        {% include "components/pin.html" %}
+    {% include "components/pin.html" %}
     {% endfor %}
 </div>
