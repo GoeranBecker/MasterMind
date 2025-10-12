@@ -74,3 +74,29 @@
 - Codemaker darf Fehler machen beim auswerten (Maybe toggle)
 
 
+
+### kp digga
+    server: POST /update-gamestate
+            Request-payload: GameState
+                -handler: prüfe ob gamestate ok -> ja: neuer Gamestate an alle beteiligten clients
+                                                    nein: error an sender
+
+            Response-payload: GameState
+    
+    oder
+
+    server: POST /update-answer
+        Request-payload: Answer
+            -handler: prüfe ob gamestate update valide -> ja: neuer Gamestate an alle beteiligten clients
+                                                            nein: error an sender
+
+        Response-payload: GameState
+    
+     POST /update-guess
+        Request-payload: Guess
+            -handler: prüfe ob gamestate ok -> ja: neuer Gamestate an alle beteiligten clients
+                                                nein: error an sender
+
+        Response-payload: GameState
+
+
