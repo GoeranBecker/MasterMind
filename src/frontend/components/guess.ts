@@ -1,24 +1,21 @@
-type RGB = string;
+import { Code, Colors } from "../types.js";
+import { getColorValue } from "../themes.js"
 
-type Guess = Array<RGB>;
+const mockState: Code = [
+  Colors.RED,
+  Colors.GREEN,
+  null,
+  Colors.BLUE
+]
 
-const mockState: Guess = [
-    "rgb(250, 90, 0)",
-    "rgb(90, 250, 90)",
-    "rgb(90, 90, 250)",
-    "transparent"
-];
-
-function renderColors(state: Guess) {
+function renderColors(state: Code) {
     const guessElem = document.getElementById("guess0");
     Array.from(guessElem.children)
     .filter(child => {
         return child.classList.contains("pin");
     })
     .forEach((pin, index) => {
-        console.log(pin);
-        console.log(index);
-        (pin as HTMLElement).style.backgroundColor = state[index];
+        (pin as HTMLElement).style.backgroundColor = getColorValue(state[index]);
     })
 }
 
